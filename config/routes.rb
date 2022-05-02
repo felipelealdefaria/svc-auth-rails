@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  root "static_pages#home"
+  
+  get "sign_up", to: "users#new"
+  post "sign_up", to: "users#create"
 
-  # Defines the root path route ("/")
-  # root "articles#index"
+  resources :confirmations, only: [:create, :edit, :new], param: :confirmation_token
 end
